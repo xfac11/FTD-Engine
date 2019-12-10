@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testarPerf", "testarPerf\testarPerf.vcxproj", "{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Debug|x64.ActiveCfg = Debug|x64
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Debug|x64.Build.0 = Debug|x64
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Debug|x86.ActiveCfg = Debug|Win32
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Debug|x86.Build.0 = Debug|Win32
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Release|x64.ActiveCfg = Release|x64
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Release|x64.Build.0 = Release|x64
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Release|x86.ActiveCfg = Release|Win32
+		{DE78EB18-9D5C-4FA1-A82C-B8E022B81A37}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37F05256-2546-45A8-AA46-B89F5861E893}
+	EndGlobalSection
+EndGlobal
