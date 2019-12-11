@@ -368,6 +368,7 @@ namespace FTD
 			return result;
 		};
 
+		#ifdef _DEBUG
 		friend std::ostream& operator<<(std::ostream& os, const Matrix& aMx)
 		{
 			
@@ -384,5 +385,6 @@ namespace FTD
 			
 			return os;
 		};
+		#endif	
 	};
 }
