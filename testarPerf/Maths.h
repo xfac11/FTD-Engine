@@ -207,21 +207,39 @@ namespace FTD
 			y = vec.y;
 			z = vec.z;
 			w = oW;
-		}
+		};
 		Vector4(const Vector4& vec)
 		{
 			x = vec.x;
 			y = vec.y;
 			z = vec.z;
 			w = vec.w;
-		}
-		void operator=(const Vector4& vec)
+		};
+		const Vector4& operator=(const Vector4& vec)
 		{
 			x = vec.x;
 			y = vec.y;
 			z = vec.z;
 			w = vec.w;
-		}
+		};
+		float& operator[](int index)
+		{
+			switch (index)
+			{
+			case 0:
+				return x;
+				break;
+			case 1:
+				return y;
+				break;
+			case 2:
+				return z;
+				break;
+			case 3:
+				return w;
+				break;
+			}
+		};
 		const float& dot(const Vector4& vec)const
 		{
 			float result;
@@ -266,7 +284,7 @@ namespace FTD
 		};
 		friend std::ostream& operator<<(std::ostream& os, const Vector4& vec)
 		{
-			os << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
+			os << "(" << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ")";
 			return os;
 		};
 		const float& length()const
@@ -277,6 +295,7 @@ namespace FTD
 		{
 			return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 		};
+		
 	};
 
 	struct Matrix
@@ -323,6 +342,11 @@ namespace FTD
 			mx[3][0] = aMx.mx[3][0]; mx[3][1] = aMx.mx[3][1]; mx[3][2] = aMx.mx[3][2]; mx[3][3] = aMx.mx[3][3];
 		}
 
+		const float& getFloat(int row, int col)const
+		{
+			return mx[row][col];
+		}
+
 		void operator=(const Matrix& aMx)
 		{
 			mx[0][0] = aMx.mx[0][0]; mx[0][1] = aMx.mx[0][1]; mx[0][2] = aMx.mx[0][2]; mx[0][3] = aMx.mx[0][3];
@@ -354,7 +378,6 @@ namespace FTD
 			}
 			return result;
 		};
-
 		const Matrix& operator*(const Matrix& rightMx)const
 		{
 			Matrix result;
@@ -367,11 +390,35 @@ namespace FTD
 			}
 			return result;
 		};
+		Vector4 transform(const Vector4& vec)const
+		{
+			Vector4 result;
 
-		#ifdef _DEBUG
+			int i = 0;
+				result.x = mx[i][0] * vec.x + mx[i][1] * vec.y + mx[i][2] * vec.z + mx[i][3] * vec.w;
+				i++;
+				result.y = mx[i][0] * vec.x + mx[i][1] * vec.y + mx[i][2] * vec.z + mx[i][3] * vec.w;
+				i++;
+				result.z = mx[i][0] * vec.x + mx[i][1] * vec.y + mx[i][2] * vec.z + mx[i][3] * vec.w;
+				i++;
+				result.w = mx[i][0] * vec.x + mx[i][1] * vec.y + mx[i][2] * vec.z + mx[i][3] * vec.w;
+
+			return result;
+		};
+		static const Vector4& transform(const Vector4& vec, const Matrix& transform)
+		{
+			Vector4 result;
+
+			for (int i = 0; i < 4; i++)
+			{
+				result[i] = transform.getFloat(i, 0) * vec.x + transform.getFloat(i, 1) * vec.y + transform.getFloat(i, 2) * vec.z + transform.getFloat(i, 3) * vec.w;
+			}
+
+			return result;
+		};
+
 		friend std::ostream& operator<<(std::ostream& os, const Matrix& aMx)
 		{
-			
 			for (int i = 0; i < 4; i++)
 			{
 				os << "(";
@@ -385,6 +432,5 @@ namespace FTD
 			
 			return os;
 		};
-		#endif	
 	};
 }

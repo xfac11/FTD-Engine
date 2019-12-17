@@ -12,11 +12,11 @@ using namespace DirectX::SimpleMath;
 int main()
 {
 	auto start = std::chrono::high_resolution_clock::now();
-
+	FTD::Vector4 test(4, 2, 4, 3);
 	FTD::Matrix matrix(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 	FTD::Matrix matrix2(2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
 
-	FTD::Matrix result = matrix * matrix2;
+	FTD::Vector4 result = matrix.transform(test);
 	auto stop = std::chrono::high_resolution_clock::now();
 
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
